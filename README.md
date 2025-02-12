@@ -2,25 +2,6 @@
 
 This Python script allows you to upload files from a local folder to an AWS S3 bucket. It supports dynamic configuration through a YAML file, making it flexible and easy to manage.
 
-## 📦 Project Structure
-
-```
-AWS_Upload/
-├── src/
-│   └── aws_uploader.py
-├── config/
-│   └── config.yaml
-├── logs/
-├── requirements.txt
-└── README.md
-```
-
-- ``: Main script responsible for uploading files to AWS S3.
-- ``: Configuration file with AWS credentials and upload settings.
-- ``: Folder where log files are automatically generated.
-- ``: List of Python dependencies.
-- ``: This file.
-
 ## ⚙️ Configuration
 
 Create a `config.yaml` file inside the `config/` folder:
@@ -34,12 +15,12 @@ local_folder: "D:\\Path\\To\\Local\\Folder"
 s3_prefix: "optional/prefix/"
 ```
 
-- ``: Your AWS access key.
-- ``: Your AWS secret access key.
-- ``: AWS region where your bucket is located.
-- ``: Name of the S3 bucket.
-- ``: Path to the local folder with files to upload.
-- `` *(optional)*: Prefix to organize files within the S3 bucket.
+-  Your AWS access key.
+-  Your AWS secret access key.
+-  AWS region where your bucket is located.
+-  Name of the S3 bucket.
+-  Path to the local folder with files to upload.
+-  *(optional)*: Prefix to organize files within the S3 bucket.
 
 ## 🚀 Installation
 
