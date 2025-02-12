@@ -95,6 +95,24 @@ def upload_files_from_folder(aws_access_key_id, aws_secret_access_key, region_na
             except Exception as ex:
                 logger.error(f"Unexpected error uploading {local_file_path}: {ex}")
 
+def list_s3_objects(aws_access_key_id, aws_secret_access_key, region_name, bucket_name, s3_prefix=""):
+    s3_client = boto3.client(
+        's3',
+        aws_access_key_id=aws_access_key_id,
+        aws_secret_access_key=aws_secret_access_key,
+        region_name=region_name
+    )
+    try:
+        logger.info(f"Listing objects in s3://{bucket_name}/{s3_prefix}")
+        response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix=s3_prefix)
+        if 'Contents' in response:
+            for obj in response['Contents']:
+                logger.info(f"{obj['Key']} - Last Modified: {obj['LastModified']} - Size: {obj['Size']} bytes")
+        else:
+            logger.info("No objects found.")
+    except ClientError as e:
+        logger.error(f"Error listing objects: {e}")
+
 if __name__ == '__main__':
     logger = setup_logger()
     logger.info("Script started.")
@@ -111,6 +129,9 @@ if __name__ == '__main__':
     if not all([aws_access_key_id, aws_secret_access_key, region_name, bucket_name, local_folder]):
         logger.error("Error: Missing required configuration parameters.")
         exit(1)
-
+    
     upload_files_from_folder(aws_access_key_id, aws_secret_access_key, region_name, bucket_name, local_folder, s3_prefix)
+
+    list_s3_objects(aws_access_key_id, aws_secret_access_key, region_name, bucket_name, s3_prefix)
+    
     logger.info("Script finished.")
