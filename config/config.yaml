@@ -1,0 +1,6 @@
+aws_access_key_id: "YOUR-AWS-ACCESS-KEY"
+aws_secret_access_key: "YOUR-SECRET-ACCESS-KEY"
+region_name: "us-east-1"
+bucket_name: "YOUR-BUCKET-NAME"
+local_folder: "D:\\Temp"
+s3_prefix: "YOUR-OPTIONAL-PREFIX/"
