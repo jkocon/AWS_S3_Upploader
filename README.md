@@ -72,17 +72,6 @@ python src/aws_uploader.py
 - Errors during file uploads (e.g., invalid credentials, missing bucket) are logged both in the console and in the log file.
 - General exceptions are also captured and logged for debugging.
 
-## 🔐 Security Notice
-
-- **Never commit **``** with real AWS credentials to version control.**
-- Use `.gitignore` to exclude sensitive files:
-
-```bash
-config/config.yaml
-logs/
-*.log
-```
-
 ## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
